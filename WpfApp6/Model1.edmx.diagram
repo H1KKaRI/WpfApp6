@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="19db878c87de427b88aa87ebf2c2bfe2" Name="Diagram1">
+        <EntityTypeShape EntityType="HIKARIModel.Batch" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HIKARIModel.Client" Width="1.5" PointX="1.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="HIKARIModel.Employer" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HIKARIModel.Material" Width="1.5" PointX="3.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HIKARIModel.Order" Width="1.5" PointX="3.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HIKARIModel.Position" Width="1.5" PointX="1.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HIKARIModel.State" Width="1.5" PointX="1.5" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HIKARIModel.sysdiagrams" Width="1.5" PointX="3.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HIKARIModel.Toy" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HIKARIModel.ToyInOrder" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HIKARIModel.ToyMaterial" Width="1.5" PointX="6" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="HIKARIModel.User" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <AssociationConnector Association="HIKARIModel.FK_Batch_Employer" ManuallyRouted="false" />
+        <AssociationConnector Association="HIKARIModel.FK_Batch_Toy" ManuallyRouted="false" />
+        <AssociationConnector Association="HIKARIModel.FK_Order_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="HIKARIModel.FK_Employer_Position" ManuallyRouted="false" />
+        <AssociationConnector Association="HIKARIModel.FK_User_Employer" ManuallyRouted="false" />
+        <AssociationConnector Association="HIKARIModel.FK_ToyMaterial_Material" ManuallyRouted="false" />
+        <AssociationConnector Association="HIKARIModel.FK_Order_State" ManuallyRouted="false" />
+        <AssociationConnector Association="HIKARIModel.FK_ToyInOrder_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="HIKARIModel.FK_ToyInOrder_Toy" ManuallyRouted="false" />
+        <AssociationConnector Association="HIKARIModel.FK_ToyMaterial_Toy" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
