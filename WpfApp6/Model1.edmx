@@ -34,6 +34,7 @@
           <Property Name="dateStartWork" Type="date" Nullable="false" />
           <Property Name="position" Type="int" Nullable="false" />
           <Property Name="salary" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Material">
           <Key>
@@ -105,7 +106,7 @@
         </EntityType>
         <EntityType Name="User">
           <Key>
-            <PropertyRef Name="Name" />
+            <PropertyRef Name="login" />
           </Key>
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Position" Type="int" Nullable="false" />
@@ -146,6 +147,18 @@
             </Principal>
             <Dependent Role="Employer">
               <PropertyRef Name="position" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employer_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Employer" Type="Self.Employer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="login" />
+            </Principal>
+            <Dependent Role="Employer">
+              <PropertyRef Name="login" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -221,18 +234,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_User_Employer">
-          <End Role="Employer" Type="Self.Employer" Multiplicity="1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employer">
-              <PropertyRef Name="tabNum" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="tabNum" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -289,6 +290,10 @@
             <End Role="Position" EntitySet="Position" />
             <End Role="Employer" EntitySet="Employer" />
           </AssociationSet>
+          <AssociationSet Name="FK_Employer_User" Association="Self.FK_Employer_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Employer" EntitySet="Employer" />
+          </AssociationSet>
           <AssociationSet Name="FK_Order_Client" Association="Self.FK_Order_Client">
             <End Role="Client" EntitySet="Client" />
             <End Role="Order" EntitySet="Order" />
@@ -312,10 +317,6 @@
           <AssociationSet Name="FK_ToyMaterial_Toy" Association="Self.FK_ToyMaterial_Toy">
             <End Role="Toy" EntitySet="Toy" />
             <End Role="ToyMaterial" EntitySet="ToyMaterial" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Employer" Association="Self.FK_User_Employer">
-            <End Role="Employer" EntitySet="Employer" />
-            <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -355,9 +356,10 @@
           <Property Name="dateStartWork" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="position" Type="Int32" Nullable="false" />
           <Property Name="salary" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Batch" Relationship="Self.FK_Batch_Employer" FromRole="Employer" ToRole="Batch" />
           <NavigationProperty Name="Position1" Relationship="Self.FK_Employer_Position" FromRole="Employer" ToRole="Position" />
-          <NavigationProperty Name="User" Relationship="Self.FK_User_Employer" FromRole="Employer" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Employer_User" FromRole="Employer" ToRole="User" />
         </EntityType>
         <EntityType Name="Material">
           <Key>
@@ -442,14 +444,14 @@
         </EntityType>
         <EntityType Name="User">
           <Key>
-            <PropertyRef Name="Name" />
+            <PropertyRef Name="login" />
           </Key>
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Position" Type="Int32" Nullable="false" />
           <Property Name="tabNum" Type="Int32" Nullable="false" />
           <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employer" Relationship="Self.FK_User_Employer" FromRole="User" ToRole="Employer" />
+          <NavigationProperty Name="Employer" Relationship="Self.FK_Employer_User" FromRole="User" ToRole="Employer" />
         </EntityType>
         <Association Name="FK_Batch_Employer">
           <End Role="Employer" Type="Self.Employer" Multiplicity="1" />
@@ -499,15 +501,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_User_Employer">
-          <End Role="Employer" Type="Self.Employer" Multiplicity="1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
+        <Association Name="FK_Employer_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Employer" Type="Self.Employer" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Employer">
-              <PropertyRef Name="tabNum" />
+            <Principal Role="User">
+              <PropertyRef Name="login" />
             </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="tabNum" />
+            <Dependent Role="Employer">
+              <PropertyRef Name="login" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -571,7 +573,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="HIKARIEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="HIKARIEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Batch" EntityType="Self.Batch" />
           <EntitySet Name="Client" EntityType="Self.Client" />
           <EntitySet Name="Employer" EntityType="Self.Employer" />
@@ -600,9 +602,9 @@
             <End Role="Position" EntitySet="Position" />
             <End Role="Employer" EntitySet="Employer" />
           </AssociationSet>
-          <AssociationSet Name="FK_User_Employer" Association="Self.FK_User_Employer">
-            <End Role="Employer" EntitySet="Employer" />
+          <AssociationSet Name="FK_Employer_User" Association="Self.FK_Employer_User">
             <End Role="User" EntitySet="User" />
+            <End Role="Employer" EntitySet="Employer" />
           </AssociationSet>
           <AssociationSet Name="FK_ToyMaterial_Material" Association="Self.FK_ToyMaterial_Material">
             <End Role="Material" EntitySet="Material" />
@@ -671,7 +673,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище HIKARIModelContainer" CdmEntityContainer="HIKARIEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище HIKARIModelContainer" CdmEntityContainer="HIKARIEntities1">
           <EntitySetMapping Name="Batch">
             <EntityTypeMapping TypeName="HIKARIModel.Batch">
               <MappingFragment StoreEntitySet="Batch">
@@ -702,6 +704,7 @@
                 <ScalarProperty Name="dateStartWork" ColumnName="dateStartWork" />
                 <ScalarProperty Name="position" ColumnName="position" />
                 <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="login" ColumnName="login" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

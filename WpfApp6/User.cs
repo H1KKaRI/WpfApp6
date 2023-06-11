@@ -14,12 +14,19 @@ namespace WpfApp6
     
     public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.Employer = new HashSet<Employer>();
+        }
+    
         public string Name { get; set; }
         public int Position { get; set; }
         public int tabNum { get; set; }
         public string login { get; set; }
         public string password { get; set; }
     
-        public virtual Employer Employer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employer> Employer { get; set; }
     }
 }

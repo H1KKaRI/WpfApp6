@@ -18,7 +18,6 @@ namespace WpfApp6
         public Employer()
         {
             this.Batch = new HashSet<Batch>();
-            this.User = new HashSet<User>();
         }
     
         public int tabNum { get; set; }
@@ -26,11 +25,11 @@ namespace WpfApp6
         public System.DateTime dateStartWork { get; set; }
         public int position { get; set; }
         public decimal salary { get; set; }
+        public string login { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Batch> Batch { get; set; }
         public virtual Position Position1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> User { get; set; }
+        public virtual User User { get; set; }
     }
 }

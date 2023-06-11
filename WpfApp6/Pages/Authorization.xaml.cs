@@ -20,33 +20,53 @@ namespace WpfApp6.Pages
     /// </summary>
     public partial class Authorization : Page
     {
-        HIKARIEntities context;
-        public Authorization(HIKARIEntities cont)
+        HIKARIEntities1 context;
+        public Authorization(HIKARIEntities1 cont)
         {
             InitializeComponent();
             context = cont;
+            showPass.IsEnabled = false;
         }
-
+        
+        int countClick = 0;
         private void EnterClick(object sender, RoutedEventArgs e)
         {
-            string log = loginBox.Text;
-            string pass = passBox.Text;
-            User user = context.User.Find(log);
+            
+            countClick++;
+            string login = loginBox.Text;
+            string password = passBox.Password;
+            User user = context.User.Find(login);
             if (user != null)
             {
-                if (user.password.Equals(pass))
+                if (user.password.Equals(password))
                 {
-                    MessageBox.Show("Вы успешно авторизованы");
+                    NavigationService.Navigate(new MainPage(context));
+                    countClick = 0;
                 }
                 else
                 {
+                    
                     MessageBox.Show("Вы ввели неверный пароль");
+                    if (countClick==3)
+                    {
+                        showPass.IsEnabled = true;
+                    }
                 }
             }
             else
             {
                 MessageBox.Show("Данный пользователь не существует");
+                if (countClick == 3)
+                {
+                    showPass.IsEnabled = true;
+                }
             }
+        }
+
+        private void showClick(object sender, RoutedEventArgs e)
+        {
+            User us = context.User.Find(loginBox.Text);
+            NavigationService.Navigate(new suggestpass(us));
         }
     }
 }

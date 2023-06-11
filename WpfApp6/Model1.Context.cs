@@ -15,10 +15,10 @@ namespace WpfApp6
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class HIKARIEntities : DbContext
+    public partial class HIKARIEntities1 : DbContext
     {
-        public HIKARIEntities()
-            : base("name=HIKARIEntities")
+        public HIKARIEntities1()
+            : base("name=HIKARIEntities1")
         {
         }
     
