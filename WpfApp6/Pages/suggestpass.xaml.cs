@@ -20,19 +20,29 @@ namespace WpfApp6.Pages
     /// </summary>
     public partial class suggestpass : Page
     {
-        User _user;
-        public suggestpass(User user)
+        HIKARIEntities1 context;
+        public suggestpass(HIKARIEntities1 cont)
         {
-            tabBox.Text = Convert.ToString( user.tabNum);
             InitializeComponent();
-            _user = user;
+            context = cont;
         }
 
         private void continueClick(object sender, RoutedEventArgs e)
         {
-            if (_user.tabNum == Convert.ToInt32(tabBox.Text) && _user.Name == Convert.ToString(fioBox.Text) && _user.Position == Convert.ToInt32(dolBox.Text))
+            int tab = Convert.ToInt32( tabBox.Text);
+            User fio = context.User.Find(fio);
+            int dol = Convert.ToInt32(dolBox.Text);
+            DateTime date = Convert.ToDateTime(dateBox.Text);
+            if (fio != null)
             {
-                MessageBox.Show($"Ваш пароль: {_user.password}", "Пароль", MessageBoxButton.OK, MessageBoxImage.Information);
+                if(fio.Employer == num)
+                {
+                    MessageBox.Show(User.password, "Пароль");
+                }
+                else
+                {
+                    MessageBox.Show("Введены неверные данные");
+                }
             }
         }
     }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace WpfApp6.Pages
 {
@@ -21,10 +22,12 @@ namespace WpfApp6.Pages
     public partial class Authorization : Page
     {
         HIKARIEntities1 context;
-        public Authorization(HIKARIEntities1 cont)
+        Window window;
+        public Authorization(HIKARIEntities1 cont, Window w)
         {
             InitializeComponent();
             context = cont;
+            window = w;
             showPass.IsEnabled = false;
         }
         
@@ -40,7 +43,7 @@ namespace WpfApp6.Pages
             {
                 if (user.password.Equals(password))
                 {
-                    NavigationService.Navigate(new MainPage(context));
+                    NavigationService.Navigate(new MainPage(context, window));
                     countClick = 0;
                 }
                 else
@@ -65,8 +68,8 @@ namespace WpfApp6.Pages
 
         private void showClick(object sender, RoutedEventArgs e)
         {
-            User us = context.User.Find(loginBox.Text);
-            NavigationService.Navigate(new suggestpass(us));
+            suggestpass window = new suggestpass(context);
+            window.Show();
         }
     }
 }

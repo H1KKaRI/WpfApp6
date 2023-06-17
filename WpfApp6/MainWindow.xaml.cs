@@ -21,11 +21,13 @@ namespace WpfApp6
     public partial class MainWindow : Window
     {
         HIKARIEntities1 context;
-        public MainWindow()
+        Window Window;
+        public MainWindow(HIKARIEntities1 context, Window window)
         {
             InitializeComponent();
             context = new HIKARIEntities1();
-            myFrame.Navigate(new Pages.Authorization(context));
+            myFrame.Navigate(new Pages.Authorization(context, this));
+            Window = window;
 
         }
     }

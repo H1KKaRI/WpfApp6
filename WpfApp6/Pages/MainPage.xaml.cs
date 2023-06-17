@@ -20,9 +20,16 @@ namespace WpfApp6.Pages
     /// </summary>
     public partial class MainPage : Page
     {
-        public MainPage(HIKARIEntities1 context)
+        Window Window;
+        public MainPage(HIKARIEntities1 context, Window window)
         {
             InitializeComponent();
+            Window= window;
+        }
+
+        private void escape(object sender, RoutedEventArgs e)
+        {
+            this.Window.Close();
         }
     }
 }
