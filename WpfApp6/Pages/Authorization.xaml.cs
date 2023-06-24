@@ -68,8 +68,8 @@ namespace WpfApp6.Pages
 
         private void showClick(object sender, RoutedEventArgs e)
         {
-            suggestpass window = new suggestpass(context);
-            window.Show();
+            //suggestpass window = new suggestpass(context);
+            NavigationService.Navigate(new suggestpass(context));
         }
     }
 }

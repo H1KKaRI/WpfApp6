@@ -21,15 +21,34 @@ namespace WpfApp6.Pages
     public partial class MainPage : Page
     {
         Window Window;
+        HIKARIEntities1 _context;
         public MainPage(HIKARIEntities1 context, Window window)
         {
-            InitializeComponent();
-            Window= window;
+            
+                InitializeComponent();
+                Window = window;
+                _context = context;
+            
         }
 
         private void escape(object sender, RoutedEventArgs e)
         {
             this.Window.Close();
+        }
+
+        private void EscapeClick(object sender, RoutedEventArgs e)
+        {
+            Window.Close();
+        }
+
+        private void SotrClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ItemClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

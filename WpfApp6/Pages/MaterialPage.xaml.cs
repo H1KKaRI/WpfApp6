@@ -13,22 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApp6
+namespace WpfApp6.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для MaterialPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MaterialPage : Page
     {
-        HIKARIEntities1 context;
-        Window Window;
-        public MainWindow()
+        public MaterialPage()
         {
             InitializeComponent();
-            context = new HIKARIEntities1();
-            myFrame.Navigate(new Pages.Authorization(context, this));
-            
-
         }
     }
 }

@@ -25,19 +25,20 @@ namespace WpfApp6.Pages
         {
             InitializeComponent();
             context = cont;
+
         }
 
         private void continueClick(object sender, RoutedEventArgs e)
         {
             int tab = Convert.ToInt32( tabBox.Text);
-            User fio = context.User.Find(fio);
+            User name = context.User.Find(Name);
             int dol = Convert.ToInt32(dolBox.Text);
             DateTime date = Convert.ToDateTime(dateBox.Text);
-            if (fio != null)
+            if (name!= null)
             {
-                if(fio.Employer == num)
+                if(name.Employer == name)
                 {
-                    MessageBox.Show(User.password, "Пароль");
+                    MessageBox.Show(name.password, "Пароль");
                 }
                 else
                 {
