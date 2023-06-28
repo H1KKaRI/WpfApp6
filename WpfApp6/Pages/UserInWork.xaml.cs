@@ -25,12 +25,14 @@ namespace WpfApp6.Pages
         {
             InitializeComponent();
             context = _cont;
+            orderData.ItemsSource = context.Order.ToList();
+            
         }
 
 
         private void RemoveClick(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Вы уточно хотите удалить ингредиент?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("Вы уточно хотите удалить заказ?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes) 
             {
                 try 
@@ -38,7 +40,7 @@ namespace WpfApp6.Pages
                     User ing = (sender as Hyperlink).DataContext as User;
                     context.User.Remove(ing);
                     context.SaveChanges();
-                    userData.ItemsSource = context.User.ToList();
+                   
                 }
                 catch
                 {
@@ -50,16 +52,26 @@ namespace WpfApp6.Pages
         private void UpdateClick(object sender, RoutedEventArgs e)
         {
             User ing = (sender as Hyperlink).DataContext as User;
+            try
+            {
+
+               
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка!");
+            }
         }
 
         private void EditClick(object sender, RoutedEventArgs e)
         {
-            User ing = userData.SelectedItem as User;
+           
         }
 
         private void AddOrderClick(object sender, RoutedEventArgs e)
         {
-
+            Order order = orderData.SelectedItem as Order;
+            //NavigationService.Navigate(new (context,order));
         }
     }
 }

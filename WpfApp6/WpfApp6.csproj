@@ -87,11 +87,20 @@
     <Compile Include="Pages\AddOrder.xaml.cs">
       <DependentUpon>AddOrder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\kliPage.xaml.cs">
+      <DependentUpon>kliPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MaterialPage.xaml.cs">
+      <DependentUpon>MaterialPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\suggestpass.xaml.cs">
       <DependentUpon>suggestpass.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\toyPage.xaml.cs">
+      <DependentUpon>toyPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\UserInWork.xaml.cs">
       <DependentUpon>UserInWork.xaml</DependentUpon>
@@ -148,11 +157,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\kliPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\MaterialPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\suggestpass.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\toyPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

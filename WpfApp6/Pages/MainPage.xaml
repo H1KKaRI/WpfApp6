@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp6.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="500" d:DesignWidth="1000"
+      d:DesignHeight="700" d:DesignWidth="1000"
       Title="MainPage"  Background="#004165">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -32,9 +32,9 @@
             <Image Source="/images/FabulousCountry.png" Height="100" Grid.RowSpan="2"/>
 
 
-            <Button Grid.Row="2" Click="SotrClick">Сотрудники</Button>
-            <Button Grid.Row="3" Click="ItemClick">Материалы</Button>
-
+            <Button Grid.Row="2" Click="SotrClick">Заказы</Button>
+            <Button Grid.Row="3" Click="ItemClick">Игрушки</Button>
+            <Button Grid.Row="4" Click="kliClick">Клиенты</Button>
             <Button Grid.Row="9" Click="EscapeClick">Выход</Button>
         </Grid>
 

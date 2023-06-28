@@ -31,5 +31,6 @@
         <TextBox Grid.Row="3" Grid.Column="1" Margin="20" Name="dolBox"/>
         <TextBox Grid.Row="4" Grid.Column="1" Margin="20" Name="dateBox"/>
         <Button Grid.Row="5" Grid.Column="1" Margin="15" Click="continueClick" >Готово</Button>
+        <Button Grid.Row="5"  Margin="15" Click="backClick" >Назад</Button>
     </Grid>
 </Page>

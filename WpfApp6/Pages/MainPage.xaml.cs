@@ -38,17 +38,23 @@ namespace WpfApp6.Pages
 
         private void EscapeClick(object sender, RoutedEventArgs e)
         {
-            Window.Close();
+           // Window.Close();
+            NavigationService.GoBack();
         }
 
         private void SotrClick(object sender, RoutedEventArgs e)
         {
-
+            frameToBasePages.Navigate(new UserInWork(_context));
         }
 
         private void ItemClick(object sender, RoutedEventArgs e)
         {
+            frameToBasePages.Navigate(new toyPage(_context));
+        }
 
+        private void kliClick(object sender, RoutedEventArgs e)
+        {
+            frameToBasePages.Navigate(new kliPage(_context));
         }
     }
 }

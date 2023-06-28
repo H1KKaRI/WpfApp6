@@ -35,5 +35,6 @@
         </StackPanel>
         <Button Grid.Column="1" Grid.Row="2" Margin="130,10" Click="EnterClick" Name="ButtonEnter" >Вход</Button>
         <Button Grid.Column="0" Grid.Row="4" Margin="10" Click="showClick" Name="showPass">Подсказать пароль</Button>
+        <Button Grid.Column="3" Grid.Row="4" Margin="10" Click="exitClick" Name="exit">Выход</Button>
     </Grid>
 </Page>

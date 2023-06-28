@@ -34,17 +34,24 @@ namespace WpfApp6.Pages
             User name = context.User.Find(Name);
             int dol = Convert.ToInt32(dolBox.Text);
             DateTime date = Convert.ToDateTime(dateBox.Text);
-            if (name!= null)
+            if (context.User.Any(x=>x.tabNum==tab))
             {
-                if(name.Employer == name)
+                User tabNum = context.User.ToList().Find(x => x.tabNum == tab);
+                if (tabNum == null)
                 {
-                    MessageBox.Show(name.password, "Пароль");
+                    MessageBox.Show("Сотрудника с таким номером не существует!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else
                 {
-                    MessageBox.Show("Введены неверные данные");
+                    MessageBox.Show($"Ваш пароль {tabNum.password}");
                 }
             }
+            
+        }
+
+        private void backClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

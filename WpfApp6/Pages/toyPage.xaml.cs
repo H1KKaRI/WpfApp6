@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.NetworkInformation;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,30 +17,31 @@ using System.Windows.Shapes;
 namespace WpfApp6.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AddOrder.xaml
+    /// Логика взаимодействия для toyPage.xaml
     /// </summary>
-    public partial class AddOrder : Page
+    public partial class toyPage : Page
     {
         HIKARIEntities1 context;
-        User user;
-        public AddOrder(HIKARIEntities1 c)
+        public toyPage(HIKARIEntities1 _cont)
         {
             InitializeComponent();
-            context = c;
-       
-           
+            context = _cont;
+            toyData.ItemsSource = context.Toy.ToList();
+        }
+
+        private void UpdateClick(object sender, RoutedEventArgs e)
+        {
 
         }
 
-        private void CanselCkick(object sender, RoutedEventArgs e)
+        private void RemoveClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+
         }
 
-
-        private void AddOrderClick(object sender, RoutedEventArgs e)
+        private void EditClick(object sender, RoutedEventArgs e)
         {
-                
+
         }
     }
 }
